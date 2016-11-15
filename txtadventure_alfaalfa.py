@@ -10,10 +10,7 @@ from random import randint
 #global variables
 condition = ["unknown"]
 inventory = ["bag"]
-
 print("This is an introduction about where you are")
-
-
 
 def getcmd(cmdlist):
 	cmd = input("> ")
@@ -28,18 +25,16 @@ def start(inventory):
 	print("1: bushes")
 	print("2: river")
 	print("3: home")
-	print("to check your inventory type \"inventory\" at any point")  
-	print("to check your condition type \"condition\" at any point")
 	#list the choices
 
-	cmdlist = ["1", "2", "3",]
+	cmdlist = [1, 2, 3,]
 	cmd = getcmd(cmdlist)
 
-	if cmd == "1":
+	if cmd == 1:
 		bushes(inventory)
-	elif cmd == "2":
+	elif cmd == 2:
 		river(inventory, condition)
-	elif cmd == "3":
+	elif cmd == 3:
 		print("You walk in a house. It seems cosy")
 		house(inventory, condition)
 	
@@ -48,12 +43,12 @@ def bushes(inventory):
 	print ("1: take the path")
 	print ("2: turn back")
 
-	cmdlist = ["1", "2",]
+	cmdlist = [1, 2,]
 	cmd = getcmd(cmdlist)
 
-	if cmd == "1":
+	if cmd == 1:
 		print ("You follow the path")
-	elif cmd == "2":
+	elif cmd == 2:
 		start(inventory)
 
 def river(inventory, condition):
@@ -66,12 +61,12 @@ def river(inventory, condition):
 	print("The current seems quite strong")
 	print("1: turn back")
 	print("2: cross the river")
-	cmdlist = ["1", "2",]
+	cmdlist = [1, 2,]
 	cmd = getcmd(cmdlist)
-	if cmd == "1":
+	if cmd == 1:
 		print("You turn back and leave the current behidn you")
 		start(inventory)
-	elif cmd == "2":
+	elif cmd == 2:
 		print("You've stepped into the river and your feet has gotten wet")
 		condition.append("wet")
 		print(condition)
@@ -79,9 +74,9 @@ def river(inventory, condition):
 		print("2: continue one")
 		cmdlist = ["1", "2",]
 		cmd = getcmd(cmdlist)
-		if cmd == "1":
+		if cmd == 1:
 			start(inventory)
-		elif cmd == "2":
+		elif cmd == 2:
 			print("You try to get across, but the current swoops you away")
 			print("Your body will wash out 5 days later")
 			print("But no one will find it for months")
@@ -94,26 +89,25 @@ def house(inventory, condition):
 	print ("2: lay in bed")
 	print ("3: search the table")
 	print ("4: get out")
-	cmdlist = ["1", "2", "3", "4",]
+	cmdlist = [1, 2, 3, 4,]
 	cmd = getcmd(cmdlist)
-	if cmd == "1":
+	if cmd == 1:
 		print ("The heart is cold, but there's some firewood in it")
 		print ("1: try to start a fire")
 		print ("2: turn back")
-		cmdlist = ["1", "2",]
+		cmdlist = [1, 2,]
 		cmd = getcmd(cmdlist)
-		if cmd == "1":
+		if cmd == 1:
 			if "matches" in inventory:
 				print ("You manage to light a fire")
 				time.sleep(2)
 				print ("The room fills with warmth and you feel a little better")
 				condition.append("dry")
-				print(condition)
 				house(inventory, condition)
 			else:
 				print ("You don't have anything to start the fire with")
 				house(inventory, condition)
-	if cmd == "2":
+	if cmd == 2:
 		if "tired" in condition:
 			condition.append("rested")
 			condition.remove("tired")
@@ -121,11 +115,11 @@ def house(inventory, condition):
 		else:
 			print ("you lay there pondering aimlessly and get up after a while")
 			house(inventory, condition)
-	if cmd == "3":
+	if cmd == 3:
 		inventory.append("matches")
 		print ("you found a box of matches and stash it in your pocket")
 		house(inventory, condition)
-	if cmd == "4":
+	if cmd == 4:
 		start(inventory)
 
 start(inventory)
