@@ -73,11 +73,11 @@ rooms[7] = Room("path", "you push yourself thorugh bushes and come out to a smal
 rooms[8] = Room("meadow edge", "you come to an edge of a meadow. it thickens to the north. there's a forest\
 to the west and the keeps marking the eadge of a field to the east.", 9, 7, 11, 10, 0, 0)
 rooms[9] = Room("meadow", "it's a meadow", 0, 8, 0, 0, 0, 0)
-rooms[10] = Room("forest", "it's a forest", 0, 13, 0, 8, 0, 0)
-rooms[11] = Room("field path", "field runs along the field", 0, 11, 8, 0, 0, 0)
+rooms[10] = Room("forest", "it's a forest. green and moist. there's a stone with a frog sitting atop of it", 0, 13, 8, 0, 0, 0)
+rooms[11] = Room("field path", "field runs along the field", 0, 12, 8, 0, 0, 0)
 rooms[12] = Room("field", "there used to be crops here. there are none here now, but there's a big,\
-broken cart in the middle of it.", 11, 0, 7, 0, 0, 0)
-rooms[13] = Room("field", "it lays barren. a thick forest spreads to north.", 10, 0, 7, 0, 0, 0)
+broken cart in the middle of it.", 11, 0, 0, 7, 0, 0)
+rooms[13] = Room("field", "it lays barren even though the earth looks rich. a thick forest spreads to north.", 10, 0, 7, 0, 0, 0)
 
 class Item:
     #Initialize the item class
@@ -107,8 +107,13 @@ items[5] = Item("table", "the table is dusty but for a spot in the middle which 
 there's a box of matches on the table.", 4, False, "it's just a table", "none", "there is a box of \
 matches on the table", False)
 items[6] = Item("twig", "a small twig. dry and brittle.", 3, True, "whole", "none", "none", False)
-items[7] = Item("broken cart", "used to be pulled by horses. they are in different fields now.", 12, False, \
+items[7] = Item("cart", "used to be pulled by horses. they are in different fields now. a showel lies next to it", 12, False, \
     "broken. your stare won't fix them", "none", "something might happen", False)
+items[8] = Item("frog", "a weary looking frog sits on a stone and lazily looks at you. it seems a bit hungry.", 10, False,\
+    "hunry", "worm", "the frog looks at you and something resembling smile spreads on its face.", False)
+items[9] = Item("worm", "a thick and juicy worm", 13, True, "juicy", "showel", "you pick up the worm and show it behind your coral", False)
+items[10] = Item("showel", "a tool for digging", 12, True, "whole", "none", "the showel seems sturdy", False)
+items[11] = Item("field", "full of rich soil", 13, False, "whole", "showel", "you struck ground and lift revealing a fat worm", False)
 
 #main LOOP
 
@@ -218,7 +223,7 @@ while True:
     
     #Crossing the river
     if player_location == 6 and move[1] == "east":
-        if "swin" in inventory:
+        if "swim" in inventory:
             player_location = 6
         else:
             print("you struggle against the stream, but it surrounds you too thightly and takes you with it.")
@@ -249,6 +254,16 @@ while True:
     #Get twig
     if player_location == 3:
         inventory.append("twig")
+
+    #Lear to swim
+    if items[8].activated == True and player_location == 10:
+        inventory.append("swim")
+        print ("++++++++++++++")
+        print ("water seems a lot less of a threat now")
+        if "worm" in inventory:
+            inventory.remove("worm")
+            items[8].activated == False #ask about why this one won't trigger
+    
 
 
 
