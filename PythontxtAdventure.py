@@ -5,6 +5,7 @@ import os
 import time
 import random
 from random import randint
+import pickle
 
 #Character defaults
 inventory = []
@@ -32,6 +33,7 @@ To use items type USE item's name ON item's name
 Type INVENTORY at any point to see your inventory.
 Type CONDITION at any point to see your condition.
 Type HELP at any point to see this again.
+Type LOAD to load your previous game.
 """
 #Show start screen
 print_header()
@@ -210,6 +212,11 @@ while True:
         print condition
         print ("|------------------------|")
 
+    #Load previous game
+    if move[0] == "load":
+        with open("savefile.dat", "rb") as f:
+            inventory, condition, player_location = pickle.load(f)
+
     ####Random events####
     #Stone rolls in shoe
     if player_location == 2:
@@ -270,6 +277,9 @@ while True:
 
 
     
-    #Remove duplicates in lists LAST thing in loop
+    #Remove duplicates in lists and save LAST thing in loop
     inventory = list(set(inventory))
     condition = list(set(condition))
+
+    with open("savefile.dat", "wb") as f:
+        pickle.dump([inventory, condition, player_location], f, protocol = 2)
