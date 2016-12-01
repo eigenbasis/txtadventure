@@ -8,11 +8,11 @@ from random import randint
 import pickle
 
 #Character defaults
-inventory = []
+inventory = ["worm"]
 condition = []
 
 #Start player in room 1
-player_location = 1
+player_location = 13
 
 def print_header():
     print """
@@ -34,6 +34,7 @@ Type INVENTORY at any point to see your inventory.
 Type CONDITION at any point to see your condition.
 Type HELP at any point to see this again.
 Type LOAD to load your previous game.
+The game auto-saves after every move.
 """
 #Show start screen
 print_header()
@@ -127,12 +128,6 @@ while True:
     print "You are in " + rooms[player_location].introduction + ".\n"
     print rooms[player_location].description
     print "_____________________"
-
-    #Describe the things in the room (Movable items only)
-    #print "you see the following: "
-    #for iid in range(1, len(items)+1):
-        #if items[iid].location == player_location and items[iid].movable == True:
-            #print items[iid].name
 
     #Get players command
     move = raw_input("\n> ").lower().split()
@@ -262,17 +257,14 @@ while True:
     if player_location == 3:
         inventory.append("twig")
 
-    #Lear to swim
+    #Learn to swim
     if items[8].activated == True and player_location == 10:
         inventory.append("swim")
         print ("++++++++++++++")
         print ("water seems a lot less of a threat now")
+        items[8].activated = False
         if "worm" in inventory:
             inventory.remove("worm")
-            items[8].activated == False #ask about why this one won't trigger
-    
-
-
 
 
 
