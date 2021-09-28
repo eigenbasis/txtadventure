@@ -1,2 +1,2 @@
 # txtadventure
-A simple text adventure game in python
+A simple text adventure game in python3
