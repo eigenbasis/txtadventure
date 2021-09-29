@@ -142,7 +142,7 @@ while True:
         #Describe location
         print ("_____________________")
         print ("You are in " + rooms[player_location].introduction + ".\n")
-        print rooms[player_location].description
+        print (rooms[player_location].description)
         print ("_____________________")
 
         #Get players command
@@ -215,14 +215,14 @@ while True:
         #Check inventory
         if move[0] == "inventory":
             print ("|------------------------|")
-            print inventory
+            print (inventory)
             print ("|------------------------|")
             continue
 
         #Check condition
         if move[0] == "condition":
             print ("|------------------------|")
-            print condition
+            print (condition)
             print ("|------------------------|")
             continue
 
