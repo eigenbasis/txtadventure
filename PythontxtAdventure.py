@@ -209,7 +209,7 @@ while True:
 
         #Get help
         if move[0] == "help":
-            print help()
+            help()
             continue
 
         #Check inventory
