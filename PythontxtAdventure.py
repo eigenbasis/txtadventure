@@ -8,23 +8,23 @@ from random import randint
 import pickle
 
 #Character defaults
-inventory = ["peach", "swim"]
+inventory = []
 condition = []
 
 #Start player in room 1
 player_location = 1
 
 def print_header():
-    print """
+    print ("""
      __       __)                        
 (, )  |  /          /)               
    | /| / _  __   _(/  _  __   _  __ 
    |/ |/ (_(_/ (_(_(__(/_/ (__(/_/ (_
    /  |                              
                                      
-    """
+    """)
 def help():
-    print """
+    print ("""
 Welcome to Wanderer. 
 Type GO and direction to move. 
 Type TAKE and items name to pick things up.
@@ -35,7 +35,7 @@ Type CONDITION at any point to see your condition.
 Type HELP at any point to see this again.
 Type LOAD to load your previous game.
 The game auto-saves after every move.
-"""
+""")
 #Show start screen
 print_header()
 help()
@@ -140,10 +140,10 @@ while True:
     #Print header
     try:
         #Describe location
-        print "_____________________"
-        print "You are in " + rooms[player_location].introduction + ".\n"
+        print ("_____________________")
+        print ("You are in " + rooms[player_location].introduction + ".\n")
         print rooms[player_location].description
-        print "_____________________"
+        print ("_____________________")
 
         #Get players command
         move = raw_input("\n> ").lower().split()
