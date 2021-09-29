@@ -194,7 +194,7 @@ while True:
             for iid in range(1, len(items)+1):
                 if move[1] == items[iid].name and (items[iid].location == player_location or move[1] in inventory):
                     print ("++++++++++++++++++")
-                    print items[iid].description
+                    print (items[iid].description)
                     print ("++++++++++++++++++")
 
         #Use item
@@ -203,7 +203,7 @@ while True:
                 for iiid in range(1, len(items)+1):
                     if move[1] == iid and (move[3] == items[iiid].name and player_location == items[iiid].location and move[1] == items[iiid].need_item):
                         print ("+++++++++++++++++++++")
-                        print items[iiid].interaction
+                        print (items[iiid].interaction)
                         print ("+++++++++++++++++++++")
                         items[iiid].activated = True
 
