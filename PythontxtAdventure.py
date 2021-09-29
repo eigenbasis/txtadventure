@@ -34,8 +34,10 @@ Type INVENTORY at any point to see your inventory.
 Type CONDITION at any point to see your condition.
 Type HELP at any point to see this again.
 Type LOAD to load your previous game.
+Type EXIT to quite the game.
 The game auto-saves after every move.
 """)
+
 #Show start screen
 print_header()
 help()
@@ -211,6 +213,10 @@ while True:
         if move[0] == "help":
             help()
             continue
+		
+	#Exit game
+	if move[0] == "exit":
+		quit()
 
         #Check inventory
         if move[0] == "inventory":
