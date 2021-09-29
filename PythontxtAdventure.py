@@ -40,7 +40,7 @@ The game auto-saves after every move.
 print_header()
 help()
 
-delay = raw_input("press ENTER to continue.")
+delay = input("press ENTER to continue.")
 
 
 class Room:
@@ -146,7 +146,7 @@ while True:
         print ("_____________________")
 
         #Get players command
-        move = raw_input("\n> ").lower().split()
+        move = input("\n> ").lower().split()
 
         #If they type "go" first they can move
         if move[0] == "go":
@@ -253,7 +253,7 @@ while True:
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print("~~~~~~~~~~~~~~")
                 print("~~~~~~~~")
-                delay = raw_input("press ENTER to move on")
+                delay = input("press ENTER to move on")
                 break
 
         #Getting dry with fireplace
